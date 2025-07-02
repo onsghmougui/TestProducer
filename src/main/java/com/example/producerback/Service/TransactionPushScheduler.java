@@ -47,7 +47,6 @@ public class TransactionPushScheduler {
                 String encryptedJson = CryptoUtil.encrypt(json); // 👈 encryption step
                 //just for testing
                 //System.out.println("🔐 Encrypted message: " + encryptedJson);
-                //set the priority dynamically
                 jmsTemplate.execute(session -> {
                     jakarta.jms.TextMessage message = session.createTextMessage(encryptedJson); // 👈 encrypted message
                     jakarta.jms.MessageProducer producer = session.createProducer(session.createQueue(transactionQueue));
