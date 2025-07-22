@@ -29,7 +29,7 @@ public class SecurityConfig {
 
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/transactions/**").permitAll() // Allow open access to user registration and login
+                        .requestMatchers("/api/transactions/**","actuator/prometheus").permitAll() // Allow open access to user registration and login
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
